@@ -1,7 +1,9 @@
 require("dotenv").config()
 
 const mongoose = require("mongoose")
-mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true })
+mongoose.connect("mongodb://weirdooo.nutc.edu.tw:63426/accounting", {
+  useNewUrlParser: true,
+})
 
 module.exports = {
   connectDB: () => {
