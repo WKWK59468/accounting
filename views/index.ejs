@@ -1,8 +1,25 @@
 <%- include('./partial/header.ejs', {title: title, navBar: navBar}); %>
-<div class="container">
-  <h1><%= title %></h1>
-  <p>Welcome to <%= title %></p>
-  <button id="login">Login</button>
+<style type="text/css">
+</style>
+<div class="container mt-5 py-2 pl-5 p-sm-5">
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <div class="text1">Welcome</div>
+      <div class="text2">to</div>
+      <div class="text3"><%= title %></div>
+      
+      <button id="login" class="login_btn px-3 py-1 my-5">Login</button>
+    </div>
+    <div class="col-12 col-md-6">
+      <div class="my-sm-0 my-4">
+        <div>
+          <img id="notes" src="/images/notes.png" alt="notes">
+        </div>
+        <div class="text4">養成記帳的好習慣，從記帳小幫手做起</div>
+        
+      </div>
+    </div>
+  </div>
 </div>
 <script>
   document.getElementById("login").addEventListener("click",async ()=>{

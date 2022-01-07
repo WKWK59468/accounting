@@ -1,7 +1,24 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  /* font-family: 'Concert One', cursive; */
+  
 }
-
+.text1,.text2,.text3{
+  font-family: 'Concert One', sans-serif;
+  color: rgb(48, 60, 92);
+  font-size: 10vh;
+  position: relative;
+   /* animation 參數設定 */
+   animation-name: MoveToRight;    /*動畫名稱，需與 keyframe 名稱對應*/
+   animation-duration: 1s;    /*動畫持續時間，單位為秒*/
+   animation-delay: 0s;    /*動畫延遲開始時間*/
+   /* animation-iteration-count: infinite;    動畫次數，infinite 為無限次     */
+   animation-fill-mode: forwards;
+}
+@keyframes MoveToRight {
+    from { left: -20%;opacity: 0%; }
+    to { left: 0%; opacity: 100%;}
+}
 footer {
   position: fixed;
   left: 0;
@@ -11,4 +28,70 @@ footer {
   background-color: #e7e7e7;
   color: #7A7A7A;
   text-align: center;
+}
+
+.container{
+  background-color: #e7e7e7;
+  /* height: 60vh; */
+  transition: 0.6s;
+  border-radius: 1rem;
+  position: relative;
+}
+
+.login_btn{
+  font-family: 'Concert One';
+  background-color: #ffffff;
+  color: rgb(48, 60, 92);
+  border: none;
+  font-size: 4vh;
+  border-radius: 5rem;
+   /* animation 參數設定 */
+   animation-name: fadeUP;    /*動畫名稱，需與 keyframe 名稱對應*/
+   animation-duration: 1s;    /*動畫持續時間，單位為秒*/
+   animation-fill-mode: forwards;/*動畫停在最後一個影格上*/
+}
+@keyframes fadeUP {
+  0% { transform:translateY(20px);opacity: 0%;}
+  100% {transform:translateY(0px);opacity: 100%;}
+}
+
+.text4{
+  /* background-color: #ffffff; */
+  font-size: 3vh;
+  color: #474747;
+  opacity: 0%;
+  /* animation 參數設定 */
+  animation-name: fadeIn;    /*動畫名稱，需與 keyframe 名稱對應*/
+  animation-duration: 2s;    /*動畫持續時間，單位為秒*/
+  animation-delay: 1s;    /*動畫延遲開始時間*/
+  animation-fill-mode: forwards;/*動畫停在最後一個影格上*/
+}
+@keyframes fadeIn {
+  0% { transform:translateY(20px);opacity: 0%;}
+  100% {transform:translateY(0px);opacity: 100%;}
+}
+
+#notes{
+  opacity: 10%;
+  width: 25vw;
+  right: 10px;
+  top: 10px;
+  position: absolute;
+}
+
+@media screen and (max-width: 486px) {
+  .text1,.text2,.text3{
+    font-size: 8vh;
+  }
+  #notes{
+    width: 40vw;
+  }
+}
+@media screen and (min-width: 768px) {
+  .text4{
+    /* background-color: #ff8989; */
+    position: absolute;
+    bottom: 150px;
+    right: 50px;
+  }
 }
