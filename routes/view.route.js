@@ -1,8 +1,9 @@
 const express = require("express")
 const router = express.Router()
+const index = require("./view/index.route")
+const login = require("./view/login.route")
 
-router.get("/", (req, res, next) => {
-  res.render("index", { title: "記帳小幫手", result: null })
-})
+router.use("/", index)
+router.use("/login", login)
 
 module.exports = router
