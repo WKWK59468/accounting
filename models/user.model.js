@@ -28,12 +28,51 @@ const userCollection = {
       )
     })
   },
-  fetchOneUser: (userName) => {
+  findOneUser: (userName) => {
     return new Promise((resolve, reject) => {
       User.find(userName, (err, res) => {
         if (err) {
           reject(err)
         } else if (!res.length) {
+          reject("noData")
+        } else {
+          resolve(res)
+        }
+      })
+    })
+  },
+  findAllUser: () => {
+    return new Promise((resolve, reject) => {
+      User.find({}, (err, res) => {
+        if (err) {
+          reject(err)
+        } else if (!res.length) {
+          reject("noData")
+        } else {
+          resolve(res)
+        }
+      })
+    })
+  },
+  patchUser: (_id, data) => {
+    return new Promise((resolve, reject) => {
+      User.findByIdAndUpdate(_id, data, (err, res) => {
+        if (err) {
+          reject(err)
+        } else if (res.matchedCount === 0) {
+          reject("noData")
+        } else {
+          resolve(res)
+        }
+      })
+    })
+  },
+  deleteUser: (_id) => {
+    return new Promise((resolve, reject) => {
+      User.findOneAndDelete(_id, (err, res) => {
+        if (err) {
+          reject(err)
+        } else if (res.deletedCount === 0) {
           reject("noData")
         } else {
           resolve(res)
