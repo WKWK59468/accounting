@@ -14,7 +14,8 @@
     "mongoose": "^6.1.5",
     "morgan": "~1.9.1",
     "multer": "^1.4.4",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "vue": "^3.2.26"
   },
   "main": "app.js",
   "keywords": [],
