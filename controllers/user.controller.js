@@ -1,15 +1,15 @@
 const userModels = require("../models/user.model")
 const functionPackage = require("../functionPackage")
-const crpyto = require("crypto")
+const bcrypt = require("bcrypt")
+const mongoose = require("mongoose")
+const { ObjectId } = mongoose.Types
 
 class UserController {
-  addUser = (req, res) => {
+  addUser = async (req, res) => {
     const body = req.body
+    const salt = await bcrypt.genSalt(10)
 
-    body.password = crypto
-      .createHash("sha256")
-      .update(body.password)
-      .digest("base64")
+    body.password = await bcrypt.hash(body.password, salt)
 
     userModels
       .addUser(body)
@@ -96,6 +96,45 @@ class UserController {
             .json(functionPackage.resultType(500, "ServerError", err))
         }
       })
+  }
+  verify = (req, res) => {
+    if (ObjectId.isValid(req.params._id)) {
+      userModels
+        .findOneUser(req.params)
+        .then((result) => {
+          bcrypt
+            .compare(req.body.password, result[0].password)
+            .then((check) => {
+              if (check) {
+                res
+                  .status(200)
+                  .json(functionPackage.resultType(200, "OK", null))
+              } else {
+                res
+                  .status(400)
+                  .json(functionPackage.resultType(400, "Password Error", null))
+              }
+            })
+            .catch((err) => {
+              res
+                .status(400)
+                .json(functionPackage.resultType(400, "Password Error", null))
+            })
+        })
+        .catch((err) => {
+          if (err === "noData") {
+            res.status(404).json(functionPackage.resultType(404, err, null))
+          } else {
+            res
+              .status(500)
+              .json(functionPackage.resultType(500, "ServerError", err))
+          }
+        })
+    } else {
+      res
+        .status(400)
+        .json(functionPackage.resultType(400, "_id Format Error", null))
+    }
   }
 }
 

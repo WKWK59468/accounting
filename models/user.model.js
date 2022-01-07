@@ -28,9 +28,9 @@ const userCollection = {
       )
     })
   },
-  findOneUser: (userName) => {
+  findOneUser: (userID) => {
     return new Promise((resolve, reject) => {
-      User.find(userName, (err, res) => {
+      User.find(userID, (err, res) => {
         if (err) {
           reject(err)
         } else if (!res.length) {
@@ -69,7 +69,7 @@ const userCollection = {
   },
   deleteUser: (_id) => {
     return new Promise((resolve, reject) => {
-      User.findOneAndDelete(_id, (err, res) => {
+      User.findByIdAndDelete(_id, (err, res) => {
         if (err) {
           reject(err)
         } else if (res.deletedCount === 0) {
