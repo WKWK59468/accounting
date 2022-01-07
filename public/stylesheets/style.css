@@ -78,6 +78,25 @@ footer {
   top: 10px;
   position: absolute;
 }
+/* login page */
+.page_title{
+  color: rgb(48, 60, 92);
+  font-size: xx-large;
+  font-weight: 600;
+}
+
+.login_btn2{
+  font-family: 'Concert One';
+  background-color: #ffffff;
+  color: rgb(48, 60, 92);
+  border: none;
+  font-size: large;
+  border-radius: 0.5rem;
+}
+
+form{
+  font-size: large;
+}
 
 @media screen and (max-width: 486px) {
   .text1,.text2,.text3{
